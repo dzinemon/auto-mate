@@ -22,8 +22,5 @@ jobs:
           npm install dotenv
 
       - name: Run node script
-        run: node index.js
+        run: node fetcher.mjs
       - run: echo "🫡 This job's status is ${{ job.status }}."
-      - run: echo "⭐ Source is is $SOURCE."
-      - run: echo "✨ Destination is $DEST."
-      - run: echo "🚀 API KEY IS is $YT_API_KEY."

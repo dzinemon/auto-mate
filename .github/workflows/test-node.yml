@@ -26,10 +26,11 @@ jobs:
       - name: Run node script
         run: |
           node fetcher.mjs
-          echo "Payload ${{github.context.payload}}"
+          echo "Github context ${{github.context}}"
+          echo "Github context Payload ${{github.context.payload}}"
       - uses: actions/checkout@v3
       - run: |
-          echo "${{github.context.payload}}" > _data/youtube.json
+          echo "${{github.context}}" > _data/youtube.json
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add ./_data/youtube.json

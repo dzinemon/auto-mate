@@ -25,4 +25,10 @@ jobs:
 
       - name: Run node script
         run: node fetcher.mjs
+      - name: Archive Node Script Run results
+        uses: actions/upload-artifact@v3
+        with:
+          name: youtube
+          path: _data/youtube.json
+
       - run: echo "🫡 This job's status is ${{ job.status }}."

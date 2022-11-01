@@ -33,8 +33,7 @@ jobs:
         env: 
           DATA: ''
         run: |
-          DATA=$(node fetcher.mjs)
-          echo '${{ DATA }}' > _data/youtube.json
+          echo '${{ node fetcher.mjs }}' > _data/youtube.json
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add ./_data/youtube.json

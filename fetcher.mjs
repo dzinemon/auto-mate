@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 import core from '@actions/core';
 import github from '@actions/github';
 dotenv.config()
-console.log(process.env)
+// console.log(process.env)
 
 
 // YT_API_KEY

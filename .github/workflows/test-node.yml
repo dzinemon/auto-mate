@@ -4,7 +4,7 @@ on: [push]
 
 env:
   YT_API_KEY: ${{ secrets.YT_API_KEY }}
-
+  DEST: "./_data/youtube.json"
 jobs:
   how-node-works:
     runs-on: ubuntu-latest
@@ -16,3 +16,5 @@ jobs:
       - name: Run node script
         run: node index.js
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "✨ Destination is $DEST."
+      - run: echo "⭐ API KEY IS is $YT_API_KEY."

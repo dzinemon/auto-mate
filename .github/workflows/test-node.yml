@@ -34,17 +34,17 @@ jobs:
           node fetcher.mjs
           echo 'Github Response ${{ toJSON(github) }}'
 
-      # - id: git
-      #   run: |
-      #     echo '${{steps.fetch.outputs}}'
-      #     echo 'Now to string'
-      #     echo '${{toJSON(steps.fetch.outputs)}}'
-      #     echo '${{ toJSON(github) }}' > _data/youtube.json
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-      #     git add ./_data/youtube.json
-      #     git commit -m "generated json"
-      #     git push
+      - id: git
+        run: |
+          echo '${{steps.fetch.outputs}}'
+          echo 'Now to string'
+          echo '${{toJSON(steps.fetch.outputs)}}'
+          # echo '${{ toJSON(github) }}' > _data/youtube.json
+          # git config user.name github-actions
+          # git config user.email github-actions@github.com
+          # git add ./_data/youtube.json
+          # git commit -m "generated json"
+          # git push
       - name: Archive Node Script Run results
         id: art_u
         uses: actions/upload-artifact@v3

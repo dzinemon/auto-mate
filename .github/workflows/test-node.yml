@@ -31,15 +31,17 @@ jobs:
       - name: Run node script
         id: fetch
         run: |
+          node fetcher.mjs
+          echo 'Github Response ${{ toJSON(github) }}'
 
-          
-          echo '${{ node fetcher.mjs }}' > _data/youtube.json
+      - id: git
+        run: |
+          echo '${{ toJSON(github) }}' > _data/youtube.json
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add ./_data/youtube.json
           git commit -m "generated json"
           git push
-          
       - name: Archive Node Script Run results
         id: art_u
         uses: actions/upload-artifact@v3

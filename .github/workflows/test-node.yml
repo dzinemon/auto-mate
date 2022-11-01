@@ -31,9 +31,11 @@ jobs:
       - name: Run node script
         id: fetch
         run: |
-          node fetcher.mjs > _data/youtube.json
+          node fetcher.mjs
           echo "Github Response ${{github.response}}"
 
+      - id: git
+        run: |
           echo "${{github.response}}" > _data/youtube.json
           git config user.name github-actions
           git config user.email github-actions@github.com

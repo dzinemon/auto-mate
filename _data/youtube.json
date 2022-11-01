@@ -1,14 +1,14 @@
 {
-  "token": "ghs_mFvKHXDaJTs3yOU7ff9LsdhZSLtbKD28DhoR",
+  "token": "ghs_EB2mP3QqykSrOYFXtg6V1FHcr1JkZp3WCNIR",
   "job": "how-node-works",
   "ref": "refs/heads/main",
-  "sha": "867e0717c5ad0483927d7da36c995182bb92fadd",
+  "sha": "5ab0e8410625e9a6e87d65148774eedddd77a347",
   "repository": "dzinemon/auto-mate",
   "repository_owner": "dzinemon",
   "repository_owner_id": "16936500",
   "repositoryUrl": "git://github.com/dzinemon/auto-mate.git",
-  "run_id": "3373255170",
-  "run_number": "23",
+  "run_id": "3373257183",
+  "run_number": "24",
   "retention_days": "90",
   "run_attempt": "1",
   "artifact_cache_size_limit": "10",
@@ -22,50 +22,46 @@
   "base_ref": "",
   "event_name": "push",
   "event": {
-    "after": "867e0717c5ad0483927d7da36c995182bb92fadd",
+    "after": "5ab0e8410625e9a6e87d65148774eedddd77a347",
     "base_ref": null,
-    "before": "2f7e8fa21ddf2ba7037084f066741d7bc660a0b0",
+    "before": "867e0717c5ad0483927d7da36c995182bb92fadd",
     "commits": [
       {
         "author": {
-          "email": "andriisharapatov@gmail.com",
-          "name": "Andrii S",
-          "username": "dzinemon"
+          "email": "github-actions@github.com",
+          "name": "github-actions"
         },
         "committer": {
-          "email": "andriisharapatov@gmail.com",
-          "name": "Andrii S",
-          "username": "dzinemon"
+          "email": "github-actions@github.com",
+          "name": "github-actions"
         },
         "distinct": true,
-        "id": "867e0717c5ad0483927d7da36c995182bb92fadd",
-        "message": "to json",
-        "timestamp": "2022-11-02T00:09:13+02:00",
-        "tree_id": "54a3b0596eccbd066c005d2cff1a582ec8868188",
-        "url": "https://github.com/dzinemon/auto-mate/commit/867e0717c5ad0483927d7da36c995182bb92fadd"
+        "id": "5ab0e8410625e9a6e87d65148774eedddd77a347",
+        "message": "generated json",
+        "timestamp": "2022-11-01T22:09:33Z",
+        "tree_id": "dfadcd22c4253b0c0a0a378e5365ae0b1a120c39",
+        "url": "https://github.com/dzinemon/auto-mate/commit/5ab0e8410625e9a6e87d65148774eedddd77a347"
       }
     ],
-    "compare": "https://github.com/dzinemon/auto-mate/compare/2f7e8fa21ddf...867e0717c5ad",
+    "compare": "https://github.com/dzinemon/auto-mate/compare/867e0717c5ad...5ab0e8410625",
     "created": false,
     "deleted": false,
     "forced": false,
     "head_commit": {
       "author": {
-        "email": "andriisharapatov@gmail.com",
-        "name": "Andrii S",
-        "username": "dzinemon"
+        "email": "github-actions@github.com",
+        "name": "github-actions"
       },
       "committer": {
-        "email": "andriisharapatov@gmail.com",
-        "name": "Andrii S",
-        "username": "dzinemon"
+        "email": "github-actions@github.com",
+        "name": "github-actions"
       },
       "distinct": true,
-      "id": "867e0717c5ad0483927d7da36c995182bb92fadd",
-      "message": "to json",
-      "timestamp": "2022-11-02T00:09:13+02:00",
-      "tree_id": "54a3b0596eccbd066c005d2cff1a582ec8868188",
-      "url": "https://github.com/dzinemon/auto-mate/commit/867e0717c5ad0483927d7da36c995182bb92fadd"
+      "id": "5ab0e8410625e9a6e87d65148774eedddd77a347",
+      "message": "generated json",
+      "timestamp": "2022-11-01T22:09:33Z",
+      "tree_id": "dfadcd22c4253b0c0a0a378e5365ae0b1a120c39",
+      "url": "https://github.com/dzinemon/auto-mate/commit/5ab0e8410625e9a6e87d65148774eedddd77a347"
     },
     "pusher": {
       "email": "andriisharapatov@gmail.com",
@@ -153,7 +149,7 @@
       },
       "private": false,
       "pulls_url": "https://api.github.com/repos/dzinemon/auto-mate/pulls{/number}",
-      "pushed_at": 1667340556,
+      "pushed_at": 1667340573,
       "releases_url": "https://api.github.com/repos/dzinemon/auto-mate/releases{/id}",
       "size": 17,
       "ssh_url": "git@github.com:dzinemon/auto-mate.git",
@@ -208,9 +204,9 @@
   "event_path": "/home/runner/work/_temp/_github_workflow/event.json",
   "action_repository": "",
   "action_ref": "",
-  "path": "/home/runner/work/_temp/_runner_file_commands/add_path_d364a579-25bb-4103-8d89-07d2cda72c42",
-  "env": "/home/runner/work/_temp/_runner_file_commands/set_env_d364a579-25bb-4103-8d89-07d2cda72c42",
-  "step_summary": "/home/runner/work/_temp/_runner_file_commands/step_summary_d364a579-25bb-4103-8d89-07d2cda72c42",
-  "state": "/home/runner/work/_temp/_runner_file_commands/save_state_d364a579-25bb-4103-8d89-07d2cda72c42",
-  "output": "/home/runner/work/_temp/_runner_file_commands/set_output_d364a579-25bb-4103-8d89-07d2cda72c42"
+  "path": "/home/runner/work/_temp/_runner_file_commands/add_path_3944d0ff-a6df-4c53-8134-0bffd7dfa98c",
+  "env": "/home/runner/work/_temp/_runner_file_commands/set_env_3944d0ff-a6df-4c53-8134-0bffd7dfa98c",
+  "step_summary": "/home/runner/work/_temp/_runner_file_commands/step_summary_3944d0ff-a6df-4c53-8134-0bffd7dfa98c",
+  "state": "/home/runner/work/_temp/_runner_file_commands/save_state_3944d0ff-a6df-4c53-8134-0bffd7dfa98c",
+  "output": "/home/runner/work/_temp/_runner_file_commands/set_output_3944d0ff-a6df-4c53-8134-0bffd7dfa98c"
 }

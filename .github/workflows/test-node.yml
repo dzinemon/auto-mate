@@ -11,12 +11,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        id: ac_1
         with: 
           token: ${{ secrets.GH_TOKEN }}
       - uses: actions/setup-node@v3
+        id: a_node
         with:
           node-version: '16'
       - name: 🧑‍💻 install node packages 
+        id: install
         run: |
           npm install fs
           npm install node-fetch
@@ -26,11 +29,11 @@ jobs:
           npm install @actions/github
 
       - name: Run node script
+        id: fetch
         run: |
-          node fetcher.mjs
+          node fetcher.mjs > _data/youtube.json
           echo "Github Response ${{github.response}}"
-      - uses: actions/checkout@v3
-      - run: |
+
           echo "${{github.response}}" > _data/youtube.json
           git config user.name github-actions
           git config user.email github-actions@github.com
@@ -38,9 +41,11 @@ jobs:
           git commit -m "generated json"
           git push
       - name: Archive Node Script Run results
+        id: art_u
         uses: actions/upload-artifact@v3
         with:
           name: youtube
           path: _data/youtube.json
 
       - run: echo "🫡 This job's status is ${{ job.status }}."
+        id: complete

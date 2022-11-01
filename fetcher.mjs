@@ -24,7 +24,6 @@ const currentVideos = async () => {
 
 const fetchBatchSnippets = async ({ idString }) => {
   const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=${idString}&key=${apiKey}`;
-  console.log(url);
   const response = await fetch(url, requestOptions)
     .then((response) => response.text())
     .then((result) => {
@@ -64,6 +63,7 @@ const fetchAllSnippets = async ({ ids }) => {
 const createSnippetJson = async ({ path }) => {
   const ids = await currentVideos();
   const response = await fetchAllSnippets({ ids });
+  console.log(response)
   fs.writeFileSync(path, response);
 };
 

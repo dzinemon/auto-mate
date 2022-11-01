@@ -2,6 +2,8 @@ import fs from "fs";
 import fetch from "node-fetch";
 import yaml from "js-yaml";
 import dotenv from 'dotenv';
+import core from '@actions/core';
+import github from '@actions/github';
 dotenv.config()
 console.log(process.env)
 
@@ -70,8 +72,14 @@ const createSnippetJson = async ({ path }) => {
 
 (async () => {
   try {
-    await createSnippetJson({ path: dest });
+
+    const response =  await createSnippetJson({ path: dest });
+    
+    github.response = response;
+
+    console.log(`The event payload: ${response}`);
   } catch (err) {
     console.error(err);
+    core.setFailed(error.message);
   }
 })();

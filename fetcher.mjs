@@ -48,7 +48,7 @@ const fetchBatchSnippets = async ({ idString }) => {
 
 const fetchAllSnippets = async ({ ids }) => {
   var allIds = ids;
-  console.log(`🚀 Total videos founde ${allIds.length}`);
+  console.log(`🚀 Total videos found ${allIds.length}`);
   var snippets = [];
   let res;
   while (allIds.length > 0) {

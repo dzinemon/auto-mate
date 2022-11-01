@@ -32,13 +32,13 @@ jobs:
         id: fetch
         run: |
           node fetcher.mjs
-          echo 'Github Response ${{ toJSON(github) }}'
+          # echo 'Github Response ${{ toJSON(github) }}'
 
       - id: git
         run: |
-          echo '${{steps.fetch.outputs}}'
           echo 'Now to string'
-          echo '${{toJSON(steps.fetch.outputs)}}'
+          ls ${{steps.fetch.outputs.output}}
+          echo '${{toJSON(steps.fetch.outputs.output)}}'
           # echo '${{ toJSON(github) }}' > _data/youtube.json
           # git config user.name github-actions
           # git config user.email github-actions@github.com

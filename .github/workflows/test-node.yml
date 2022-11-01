@@ -14,6 +14,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16'
+      - name: 🧑‍💻 install node packages 
+        run: |
+          npm install fs
+          npm install node-fetch
+          npm install js-yaml
+          npm install dotenv
+
       - name: Run node script
         run: node index.js
       - run: echo "🫡 This job's status is ${{ job.status }}."

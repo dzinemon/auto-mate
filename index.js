@@ -1,0 +1,1 @@
+console.log(`Hey this is what we are console logging ⚽, 🏀, 🏐`)

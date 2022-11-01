@@ -1,0 +1,13 @@
+name: Testing Node Action
+run-name: ${{ github.actor }} is testing out Node in GitHub Actions 🚀
+on: [push]
+jobs:
+  how-node-works:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: node index.js
+      - run: echo "🍏 This job's status is ${{ job.status }}."

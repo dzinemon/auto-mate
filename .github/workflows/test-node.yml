@@ -22,6 +22,8 @@ jobs:
           npm install node-fetch
           npm install js-yaml
           npm install dotenv
+          npm install @actions/core
+          npm install @actions/github
 
       - name: Run node script
         run: |

@@ -59,7 +59,8 @@ const fetchAllSnippets = async ({ ids }) => {
     snippets = snippets.concat(res);
   }
 
-  return JSON.stringify(snippets, null, 2);
+  // return JSON.stringify(snippets, null, 2);
+  return snippets;
 };
 
 const createSnippetJson = async ({ path }) => {
@@ -75,8 +76,8 @@ const createSnippetJson = async ({ path }) => {
 
     const response =  await createSnippetJson({ path: dest });
   
-    console.log(`The event payload: ${response}`);
-    core.setOutput(response);
+    // console.log(`The event payload: ${response}`);
+    core.setOutput("response", response);
   } catch (err) {
     console.error(err);
     core.setFailed(error.message);

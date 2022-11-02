@@ -32,6 +32,8 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
+        const desc = e.description.replace('"', '’')
+        e.description = desc
         delete e.etag
         delete e.kind
         delete e.snippet.tags
@@ -90,7 +92,7 @@ const createSnippetJson = async ({ path }) => {
     //     }
     // });
     
-    core.setOutput("response", JSON.parse(response));
+    core.setOutput("response", response);
     return response
   } catch (err) {
     console.error(err);

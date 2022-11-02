@@ -59,15 +59,14 @@ const fetchAllSnippets = async ({ ids }) => {
     snippets = snippets.concat(res);
   }
 
-  // return JSON.stringify(snippets, null, 2);
-  return snippets;
+  return JSON.stringify(snippets, null, 2);
 };
 
 const createSnippetJson = async ({ path }) => {
   const ids = await currentVideos();
   const response = await fetchAllSnippets({ ids });
   // console.log(response)
-  fs.writeFileSync(path, response);
+  // fs.writeFileSync(path, response);
   return response
 };
 
@@ -76,7 +75,7 @@ const createSnippetJson = async ({ path }) => {
 
     const response =  await createSnippetJson({ path: dest });
   
-    // console.log(`The event payload: ${response}`);
+    console.log(`Type of response: ${typeof response}`);
     core.setOutput("response", response);
   } catch (err) {
     console.error(err);

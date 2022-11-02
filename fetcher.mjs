@@ -61,7 +61,8 @@ const fetchAllSnippets = async ({ ids }) => {
     snippets = snippets.concat(res);
   }
 
-  return JSON.stringify(snippets, null, 2);
+  // return JSON.stringify(snippets, null, 2);
+  return snippets;
 };
 
 const createSnippetJson = async ({ path }) => {

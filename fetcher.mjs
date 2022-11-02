@@ -32,8 +32,8 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
-        const desc = e.description.replace('"', '’')
-        e.description = desc
+        const desc = e.snippet.description.replace('"', '’')
+        e.snippet.description = desc
         delete e.etag
         delete e.kind
         delete e.snippet.tags
@@ -78,19 +78,8 @@ const createSnippetJson = async ({ path }) => {
     const response =  await createSnippetJson({ path: dest });
   
     console.log(`Type of response: ${typeof response}`);
+    console.log(response);
 
-    // const myToken = core.getInput('token');
-
-    // const octokit = github.getOctokit(myToken)
-
-    // const { data: pullRequest } = await octokit.rest.pulls.get({
-    //     owner: 'octokit',
-    //     repo: 'rest.js',
-    //     pull_number: 123,
-    //     mediaType: {
-    //       format: 'diff'
-    //     }
-    // });
     
     core.setOutput("response", response);
     return response

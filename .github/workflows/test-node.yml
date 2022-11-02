@@ -9,11 +9,9 @@ env:
 jobs:
   
   how-node-works:
-    outputs:
-      response:
-        description: 'Random number'
-        value: ${{ steps.fetch.outputs.response }}
     runs-on: ubuntu-latest
+    outputs:
+      response: ${{ steps.fetch.outputs.response }}
     steps:
       - uses: actions/checkout@v3
         id: ac_1
@@ -40,8 +38,10 @@ jobs:
 
       - id: git
         run: |
-          echo 'Now to string'
-          echo '${{toJSON(outputs.response)}}'
+          echo '-STEPS FETCH OUTPUTS RESPONSE-'
+          echo '${{toJSON( steps.fetch.outputs.response )}}'
+          echo '-NEEDS JOB OUTPUTS RESPONSE-'
+          echo '${{toJSON(needs.how-node-works.outputs.response)}}'
           # echo '${{ toJSON(github) }}' > _data/youtube.json
           # git config user.name github-actions
           # git config user.email github-actions@github.com

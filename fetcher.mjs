@@ -32,7 +32,7 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
-        const desc = e.snippet.description.replace('"', '’')
+        const desc = e.snippet.description.replace(/"/g, '')
         e.snippet.description = desc
         delete e.etag
         delete e.kind

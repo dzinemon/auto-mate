@@ -91,7 +91,9 @@ const createSnippetJson = async ({ path }) => {
     // create octokit instance 
     const octokit = new github.getOctokit(token);
 
-    octokit.rest.git.createCommit
+    console.log(octokit)
+
+    // octokit.rest.git.createCommit
 
     // await octokit.rest.git.createCommit({
     //   owner,

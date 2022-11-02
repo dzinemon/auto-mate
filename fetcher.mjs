@@ -72,16 +72,40 @@ const createSnippetJson = async ({ path }) => {
   const response = await fetchAllSnippets({ ids });
   // console.log(response)
   fs.writeFileSync(path, JSON.stringify(response, null, 2));
+
   return response
 };
 
 (async () => {
   try {
 
+    // fetch inputs for octokit
+    const owner = core.getInput('owner', { required: true });
+    const repo = core.getInput('repo', { required: true });
+    const author = core.getInput('author', { required: true });
+    const token = core.getInput('token', { required: true });
+    const message = 'update youtube json';
+
+    console.log(author);
+
+    // create octokit instance 
+    const octokit = new github.getOctokit(token);
+
+    octokit.rest.git.createCommit
+
+    // await octokit.rest.git.createCommit({
+    //   owner,
+    //   repo,
+    //   message,
+    //   tree,
+    //   author.name,
+    //   author.email
+    //   })
+    
     const response =  await createSnippetJson({ path: dest });
   
-    console.log(`Type of response: ${typeof response}`);
-    console.log(response);
+    // console.log(`Type of response: ${typeof response}`);
+    // console.log(response);
 
     
     core.setOutput("response", response);

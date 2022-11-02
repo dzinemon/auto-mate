@@ -33,8 +33,6 @@ jobs:
 
       - name: Run node script
         id: fetch
-        with: 
-          token: ${{ secrets.GH_TOKEN }}
         run: |
           node fetcher.mjs
 

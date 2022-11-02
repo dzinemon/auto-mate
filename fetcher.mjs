@@ -32,13 +32,14 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
-        // const desc = e.snippet.description.replace(/"/g, '')
+        const desc = e.snippet.description.replace(/"/g, '')
         // e.snippet.description = desc
         delete e.snippet.description
         delete e.etag
         delete e.kind
         delete e.snippet.tags
         delete e.snippet.localized
+        e.snippet.desc = desc
         return e
       })
       .map((i) => {

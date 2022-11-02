@@ -32,14 +32,12 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
-        const desc = e.snippet.description.replace(/"/g, '')
-        // e.snippet.description = desc
-        delete e.snippet.description
+        const desc = e.snippet.description.replace(/\r?\n|\r/g, ' ').replace(/"/g, '')
+        e.snippet.description = desc
         delete e.etag
         delete e.kind
         delete e.snippet.tags
         delete e.snippet.localized
-        e.snippet.desc = desc
         return e
       })
       .map((i) => {
@@ -79,36 +77,7 @@ const createSnippetJson = async ({ path }) => {
 (async () => {
   try {
 
-    // fetch inputs for octokit
-    const owner = core.getInput('owner', { required: true });
-    const repo = core.getInput('repo', { required: true });
-    const author = core.getInput('author', { required: true });
-    const token = core.getInput('token', { required: true });
-    const message = 'update youtube json';
-
-    console.log(author);
-
-    // create octokit instance 
-    const octokit = new github.getOctokit(token);
-
-    console.log(octokit)
-
-    // octokit.rest.git.createCommit
-
-    // await octokit.rest.git.createCommit({
-    //   owner,
-    //   repo,
-    //   message,
-    //   tree,
-    //   author.name,
-    //   author.email
-    //   })
-    
     const response =  await createSnippetJson({ path: dest });
-  
-    // console.log(`Type of response: ${typeof response}`);
-    // console.log(response);
-
     
     core.setOutput("response", response);
     return response

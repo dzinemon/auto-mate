@@ -76,7 +76,21 @@ const createSnippetJson = async ({ path }) => {
     const response =  await createSnippetJson({ path: dest });
   
     console.log(`Type of response: ${typeof response}`);
-    core.setOutput("response", response);
+
+    // const myToken = core.getInput('token');
+
+    // const octokit = github.getOctokit(myToken)
+
+    // const { data: pullRequest } = await octokit.rest.pulls.get({
+    //     owner: 'octokit',
+    //     repo: 'rest.js',
+    //     pull_number: 123,
+    //     mediaType: {
+    //       format: 'diff'
+    //     }
+    // });
+    
+    core.setOutput("response", JSON.parse(response));
     return response
   } catch (err) {
     console.error(err);

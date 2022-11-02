@@ -74,11 +74,9 @@ const createSnippetJson = async ({ path }) => {
   try {
 
     const response =  await createSnippetJson({ path: dest });
-    
-    github.response = response;
-
+  
     console.log(`The event payload: ${response}`);
-    return response;
+    core.setOutput(response);
   } catch (err) {
     console.error(err);
     core.setFailed(error.message);

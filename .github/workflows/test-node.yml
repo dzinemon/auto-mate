@@ -7,7 +7,12 @@ env:
   DEST: "./_data/youtube.json"
   SOURCE: "./_data/videos.yml"
 jobs:
+  
   how-node-works:
+    outputs:
+      response:
+        description: 'Random number'
+        value: ${{ steps.fetch.outputs.response }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -32,25 +37,22 @@ jobs:
         id: fetch
         run: |
           node fetcher.mjs
-          echo '${{ runner.temp }}'
-          ls '${{ runner.temp }}'
 
       - id: git
         run: |
           echo 'Now to string'
-          echo '${{toJSON(steps.fetch.outputs.output)}}'
+          echo '${{toJSON(outputs.response)}}'
           # echo '${{ toJSON(github) }}' > _data/youtube.json
           # git config user.name github-actions
           # git config user.email github-actions@github.com
           # git add ./_data/youtube.json
           # git commit -m "generated json"
           # git push
-      - name: Archive Node Script Run results
+      - name: Upload Artifact
         id: art_u
         uses: actions/upload-artifact@v3
         with:
           name: youtube
           path: _data/youtube.json
-
       - run: echo "🫡 This job's status is ${{ job.status }}."
         id: complete

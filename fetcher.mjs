@@ -66,7 +66,7 @@ const createSnippetJson = async ({ path }) => {
   const ids = await currentVideos();
   const response = await fetchAllSnippets({ ids });
   // console.log(response)
-  // fs.writeFileSync(path, response);
+  fs.writeFileSync(path, response);
   return response
 };
 
@@ -77,6 +77,7 @@ const createSnippetJson = async ({ path }) => {
   
     console.log(`Type of response: ${typeof response}`);
     core.setOutput("response", response);
+    return response
   } catch (err) {
     console.error(err);
     core.setFailed(error.message);

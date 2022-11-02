@@ -32,8 +32,9 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
-        const desc = e.snippet.description.replace(/"/g, '')
-        e.snippet.description = desc
+        // const desc = e.snippet.description.replace(/"/g, '')
+        // e.snippet.description = desc
+        delete e.snippet.description
         delete e.etag
         delete e.kind
         delete e.snippet.tags
@@ -61,8 +62,7 @@ const fetchAllSnippets = async ({ ids }) => {
     snippets = snippets.concat(res);
   }
 
-  // return JSON.stringify(snippets, null, 2);
-  return snippets;
+  return JSON.stringify(snippets, null, 2);
 };
 
 const createSnippetJson = async ({ path }) => {

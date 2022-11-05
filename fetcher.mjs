@@ -142,8 +142,7 @@ const createSnippetJson = async ({ path }) => {
       owner: ownerName,
 			repo: repoName,
       tree: currentTreeSHA,
-      message: `Updated programatically with Octokit`,
-      parents: [latestCommitSHA],
+      message: `Updated programatically with Octokit`
     });
 
     await octokit.rest.git.updateRef({

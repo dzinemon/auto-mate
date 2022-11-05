@@ -32,12 +32,21 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
-        const desc = e.snippet.description.replace(/\s+/g, ' ').substring(0, 300).replace(/https:\S*/mg, '').replace(/"/g, '').split('. ')[0].split('? ')[0].replace(/[(|)]/g, '').replace(e.snippet.title, '').trim();
-        e.snippet.description = desc
+        // const desc = e.snippet.description.replace(/\s+/g, ' ').substring(0, 300).replace(/https:\S*/mg, '').replace(/"/g, '').split('. ')[0].split('? ')[0].replace(/[(|)]/g, '').replace(e.snippet.title, '').trim();
+        // e.snippet.description = desc
         delete e.etag
         delete e.kind
         delete e.snippet.tags
+        delete e.snippet.channelTitle
+        delete e.snippet.categoryId
+        delete e.snippet.liveBroadcastContent
+        delete e.snippet.defaultAudioLanguage
         delete e.snippet.channelId
+        delete e.snippet.contentDetails.contentRating
+        delete e.snippet.contentDetails.projection
+        delete e.snippet.contentDetails.licensedContent
+        delete e.snippet.contentDetails.caption
+        delete e.snippet.contentDetails.definition
         delete e.snippet.localized
         return e
       })

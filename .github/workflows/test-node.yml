@@ -1,6 +1,6 @@
 name: Testing Node Action
 run-name: ${{ github.actor }} is testing out Node in GitHub Actions 🚀
-on: [push]
+on: [workflow_dispatch]
 
 env:
   YT_API_KEY: ${{ secrets.YT_API_KEY }}

@@ -106,7 +106,8 @@ const createSnippetJson = async ({ path }) => {
     console.log(`✨`);
     console.log(repoName);
     console.log(`✨`);
-    
+
+    const CommitSHA = github.context.payload.after;
 
     const files = [
       {
@@ -124,11 +125,32 @@ const createSnippetJson = async ({ path }) => {
       }
     })
 
+    const {
+      data: { sha: currentTreeSHA },
+    } = await client.git.createTree({
+      owner: ownerName,
+			repo: repoName,
+      tree: commitableFiles,
+      base_tree: CommitSHA,
+      message: 'Updated programatically with Octokit',
+      parents: [CommitSHA],
+    });
+
+    const {
+      data: { sha: newCommitSHA },
+    } = await client.git.createCommit({
+      owner: ownerName,
+			repo: repoName,
+      tree: currentTreeSHA,
+      message: `Updated programatically with Octokit`,
+      parents: [latestCommitSHA],
+    });
+
     await octokit.rest.git.createCommit({
       owner: ownerName,
       repo: repoName,
       message: message,
-      tree: commitableFiles,
+      tree: newCommitSHA,
       author: {
         name: authorName,
         email: authorEmail,

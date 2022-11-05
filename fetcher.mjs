@@ -68,7 +68,7 @@ const fetchAllSnippets = async ({ ids }) => {
 const createSnippetJson = async ({ path }) => {
   const ids = await currentVideos();
   const response = await fetchAllSnippets({ ids });
-  // console.log(response)
+  console.log(response)
   fs.writeFileSync(path, JSON.stringify(response, null, 2));
 
   return response

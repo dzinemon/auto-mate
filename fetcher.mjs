@@ -83,8 +83,8 @@ const createSnippetJson = async ({ path }) => {
 
     // const token = core.getInput('token');
     // const owner = core.getInput('owner');
-    const repo = core.getInput('repo');
-    const octokit = github.getOctokit(token);
+    // const repo = core.getInput('repo');
+    // const octokit = github.getOctokit(token);
     const message = "updated snippet json";
 
     // console.log(owner);

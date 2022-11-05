@@ -42,11 +42,11 @@ const fetchBatchSnippets = async ({ idString }) => {
         delete e.snippet.liveBroadcastContent
         delete e.snippet.defaultAudioLanguage
         delete e.snippet.channelId
-        delete e.snippet.contentDetails.contentRating
-        delete e.snippet.contentDetails.projection
-        delete e.snippet.contentDetails.licensedContent
-        delete e.snippet.contentDetails.caption
-        delete e.snippet.contentDetails.definition
+        // delete e.snippet.contentDetails.contentRating
+        // delete e.snippet.contentDetails.projection
+        // delete e.snippet.contentDetails.licensedContent
+        // delete e.snippet.contentDetails.caption
+        // delete e.snippet.contentDetails.definition
         delete e.snippet.localized
         return e
       })

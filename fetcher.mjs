@@ -111,7 +111,7 @@ const createSnippetJson = async ({ path }) => {
     const files = [
       {
         name: "_data/youtube.json",
-        contents: JSON.stringify(response, null, 2)
+        contents: "we are just making this change"
       },
     ];
 

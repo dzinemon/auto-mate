@@ -35,6 +35,8 @@ jobs:
         id: fetch
         run: |
           node fetcher.mjs
+        env:
+          token: ${{ secrets.GH_TOKEN }}
 
       # - id: git
       #   run: |

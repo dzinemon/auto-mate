@@ -32,8 +32,8 @@ const fetchBatchSnippets = async ({ idString }) => {
       const res = JSON.parse(result);
       const videoData = res.items
       .map(e => {
-        const desc = e.snippet.description.replace(/\s+/g, ' ').replace(/https:\S*/mg, '').replace(/"/g, '').split('. ')[0].split('? ')[0].replace(/[(|)]/g, '').replace(e.snippet.title, '').trim();
-        e.snippet.description = `${desc}.`
+        const desc = e.snippet.description.replace(/\s+/g, ' ').substring(0, 300).replace(/https:\S*/mg, '').replace(/"/g, '').split('. ')[0].split('? ')[0].replace(/[(|)]/g, '').replace(e.snippet.title, '').trim();
+        e.snippet.description = desc
         delete e.etag
         delete e.kind
         delete e.snippet.tags

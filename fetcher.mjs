@@ -86,7 +86,7 @@ const createSnippetJson = async ({ path }) => {
     const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
     
     
-    const message = "updated snippet json";
+    const message = "✨Updated snippet json programatically with Octokit✨";
     
     // console.log(owner);
     const payload = JSON.stringify(github.context.payload, undefined, 2)
@@ -112,7 +112,7 @@ const createSnippetJson = async ({ path }) => {
     const files = [
       {
         name: "_data/youtube.json",
-        contents: "we are just making this change"
+        contents: response
       },
     ];
 
@@ -134,7 +134,7 @@ const createSnippetJson = async ({ path }) => {
 			repo: repoName,
       tree: commitableFiles,
       base_tree: CommitSHA,
-      message: 'Updated programatically with Octokit',
+      message: message,
       parents: [CommitSHA],
     });
 
@@ -146,7 +146,7 @@ const createSnippetJson = async ({ path }) => {
       owner: ownerName,
 			repo: repoName,
       tree: currentTreeSHA,
-      message: `Updated programatically with Octokit`,
+      message: message,
       parents: [CommitSHA],
     });
 

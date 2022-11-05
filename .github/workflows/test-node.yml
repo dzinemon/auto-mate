@@ -1,6 +1,9 @@
 name: Testing Node Action
 run-name: ${{ github.actor }} is testing out Node in GitHub Actions 🚀
-on: [workflow_dispatch]
+on:
+  # Triggers the workflow every 5 minutes
+  schedule:
+    - cron: "0 3 * * *"
 
 env:
   YT_API_KEY: ${{ secrets.YT_API_KEY }}
@@ -41,16 +44,6 @@ jobs:
         env:
           token: ${{ secrets.GH_TOKEN }}
 
-      # - id: git
-      #   run: |
-      #     echo '-STRING--STEPS FETCH OUTPUTS RESPONSE-'
-      #     echo '${{steps.fetch.outputs.response}}' > _data/youtube.json
-      #     git config user.name github-actions
-      #     git config user.email github-actions@github.com
-      #     git status
-      #     git add ./_data/youtube.json
-      #     git commit -m "🎉 generated youtube json"
-      #     git push
       - name: Upload Artifact
         id: art_u
         uses: actions/upload-artifact@v3

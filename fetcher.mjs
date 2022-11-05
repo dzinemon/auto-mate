@@ -1,13 +1,12 @@
 import fs from "fs";
 import fetch from "node-fetch";
 import yaml from "js-yaml";
-import dotenv from 'dotenv';
-import core from '@actions/core';
-import github from '@actions/github';
-import { Octokit } from '@octokit/rest';
-dotenv.config()
+import dotenv from "dotenv";
+import core from "@actions/core";
+import github from "@actions/github";
+import { Octokit } from "@octokit/rest";
+dotenv.config();
 // console.log(process.env)
-
 
 // YT_API_KEY
 const apiKey = process.env.YT_API_KEY;
@@ -34,28 +33,26 @@ const fetchBatchSnippets = async ({ idString }) => {
     .then((result) => {
       const res = JSON.parse(result);
       const videoData = res.items
-      .map(e => {
-        // const desc = e.snippet.description.replace(/\s+/g, ' ').substring(0, 300).replace(/https:\S*/mg, '').replace(/"/g, '').split('. ')[0].split('? ')[0].replace(/[(|)]/g, '').replace(e.snippet.title, '').trim();
-        // e.snippet.description = desc
-        delete e.etag
-        delete e.kind
-        delete e.snippet.tags
-        delete e.snippet.channelTitle
-        delete e.snippet.categoryId
-        delete e.snippet.liveBroadcastContent
-        delete e.snippet.defaultAudioLanguage
-        delete e.snippet.channelId
-        delete e.contentDetails.contentRating
-        delete e.contentDetails.projection
-        delete e.contentDetails.licensedContent
-        delete e.contentDetails.caption
-        delete e.contentDetails.definition
-        delete e.snippet.localized
-        return e
-      })
-      .map((i) => {
-        return { ...i, name: i.snippet.title };
-      });
+        .map((e) => {
+          delete e.etag;
+          delete e.kind;
+          delete e.snippet.tags;
+          delete e.snippet.channelTitle;
+          delete e.snippet.categoryId;
+          delete e.snippet.liveBroadcastContent;
+          delete e.snippet.defaultAudioLanguage;
+          delete e.snippet.channelId;
+          delete e.contentDetails.contentRating;
+          delete e.contentDetails.projection;
+          delete e.contentDetails.licensedContent;
+          delete e.contentDetails.caption;
+          delete e.contentDetails.definition;
+          delete e.snippet.localized;
+          return e;
+        })
+        .map((i) => {
+          return { ...i, name: i.snippet.title };
+        });
       return videoData;
     })
     .catch((error) => console.log("error", error));
@@ -74,42 +71,35 @@ const fetchAllSnippets = async ({ ids }) => {
     snippets = snippets.concat(res);
   }
 
-  // return JSON.stringify(snippets, null, 2);
-  return snippets
+  return snippets;
 };
 
 const createSnippetJson = async ({ path }) => {
   const ids = await currentVideos();
   const response = await fetchAllSnippets({ ids });
-  // console.log(response)
   fs.writeFileSync(path, JSON.stringify(response, null, 2));
 
-  return response
+  return response;
 };
 
 (async () => {
   try {
-
-    const response =  await createSnippetJson({ path: dest });
-
+    const response = await createSnippetJson({ path: dest });
 
     const octokit = new Octokit({
-      auth: process.env.GITHUB_TOKEN
+      auth: process.env.GITHUB_TOKEN,
     });
-    // const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 
-    const { login: ownerName } =  github.context.payload.repository.owner;
-    const { name: repoName } =  github.context.payload.repository;
+    const { login: ownerName } = github.context.payload.repository.owner;
+    const { name: repoName } = github.context.payload.repository;
 
     const commits = await octokit.repos.listCommits({
       owner: ownerName,
       repo: repoName,
     });
 
-  
     const message = "✨Updated snippet json programatically with Octokit✨";
-    
-    
+
     console.log(`✨`);
     console.log(authorName);
     console.log(`✨`);
@@ -120,44 +110,42 @@ const createSnippetJson = async ({ path }) => {
     console.log(repoName);
     console.log(`✨`);
 
-    const CommitSHA = commits.data[0].sha;;
+    const CommitSHA = commits.data[0].sha;
 
     const files = [
       {
         name: "_data/youtube.json",
-        contents: JSON.stringify(response, undefined, 2)
+        contents: JSON.stringify(response, undefined, 2),
       },
     ];
 
-    const commitableFiles = files.map(({name, contents}) => {
+    const commitableFiles = files.map(({ name, contents }) => {
       return {
         path: name,
-        mode: '100644',
-        type: 'commit',
-        content: contents
-      }
-    })
-
+        mode: "100644",
+        type: "commit",
+        content: contents,
+      };
+    });
 
     // Create Tree SHA
     const {
       data: { sha: currentTreeSHA },
     } = await octokit.rest.git.createTree({
       owner: ownerName,
-			repo: repoName,
+      repo: repoName,
       tree: commitableFiles,
       base_tree: CommitSHA,
       message: message,
       parents: [CommitSHA],
     });
 
-
     // Create Commit SHA
     const {
       data: { sha: newCommitSHA },
     } = await octokit.rest.git.createCommit({
       owner: ownerName,
-			repo: repoName,
+      repo: repoName,
       tree: currentTreeSHA,
       message: message,
       parents: [CommitSHA],
@@ -165,14 +153,12 @@ const createSnippetJson = async ({ path }) => {
 
     await octokit.rest.git.updateRef({
       owner: ownerName,
-			repo: repoName,
+      repo: repoName,
       sha: newCommitSHA,
       ref: "heads/main", // Whatever branch you want to push to
     });
-    
-    core.setOutput("response", "response");
-    
-    return response
+
+    return response;
   } catch (err) {
     console.error(err);
     core.setFailed(err.message);

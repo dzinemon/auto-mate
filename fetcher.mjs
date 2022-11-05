@@ -81,13 +81,13 @@ const createSnippetJson = async ({ path }) => {
     const response =  await createSnippetJson({ path: dest });
 
 
-    const token = core.getInput('token');
-    const owner = core.getInput('owner');
+    // const token = core.getInput('token');
+    // const owner = core.getInput('owner');
     const repo = core.getInput('repo');
     const octokit = github.getOctokit(token);
     const message = "updated snippet json";
 
-    console.log(owner);
+    // console.log(owner);
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
     

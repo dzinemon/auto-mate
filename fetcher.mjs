@@ -81,9 +81,9 @@ const createSnippetJson = async ({ path }) => {
     const response =  await createSnippetJson({ path: dest });
 
 
-    const token = core.getInput('token');
-    console.log(token)
-    const octokit = github.getOctokit(token);
+    // const token = core.getInput('token');
+    // console.log(token)
+    const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
     const owner = core.getInput('owner');
     console.log(owner)
     const repo = core.getInput('repo');

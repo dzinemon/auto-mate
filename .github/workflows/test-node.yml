@@ -6,6 +6,7 @@ env:
   YT_API_KEY: ${{ secrets.YT_API_KEY }}
   DEST: "./_data/youtube.json"
   SOURCE: "./_data/videos.yml"
+  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 jobs:
   
   how-node-works:

@@ -86,10 +86,10 @@ const createSnippetJson = async ({ path }) => {
     const repo = core.getInput('repo');
     const octokit = github.getOctokit(token);
     const message = "updated snippet json";
-    const { data: user } = await octokit.users.getAuthenticated();
 
-    console.log(user);
     console.log(owner);
+    const payload = JSON.stringify(github.context.payload, undefined, 2)
+    console.log(`The event payload: ${payload}`);
     
 
     const files = [

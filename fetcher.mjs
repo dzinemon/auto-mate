@@ -127,7 +127,7 @@ const createSnippetJson = async ({ path }) => {
 
     const {
       data: { sha: currentTreeSHA },
-    } = await client.git.createTree({
+    } = await octokit.rest.git.createTree({
       owner: ownerName,
 			repo: repoName,
       tree: commitableFiles,
@@ -138,7 +138,7 @@ const createSnippetJson = async ({ path }) => {
 
     const {
       data: { sha: newCommitSHA },
-    } = await client.git.createCommit({
+    } = await octokit.rest.git.createCommit({
       owner: ownerName,
 			repo: repoName,
       tree: currentTreeSHA,
@@ -146,16 +146,23 @@ const createSnippetJson = async ({ path }) => {
       parents: [latestCommitSHA],
     });
 
-    await octokit.rest.git.createCommit({
+    await octokit.rest.git.updateRef({
       owner: ownerName,
-      repo: repoName,
-      message: message,
-      tree: newCommitSHA,
-      author: {
-        name: authorName,
-        email: authorEmail,
-      }
-    })
+			repo: repoName,
+      sha: newCommitSHA,
+      ref: "main", // Whatever branch you want to push to
+    });
+
+    // await octokit.rest.git.createCommit({
+    //   owner: ownerName,
+    //   repo: repoName,
+    //   message: message,
+    //   tree: newCommitSHA,
+    //   author: {
+    //     name: authorName,
+    //     email: authorEmail,
+    //   }
+    // })
 
     
     core.setOutput("response", response);

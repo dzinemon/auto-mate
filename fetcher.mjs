@@ -79,8 +79,46 @@ const createSnippetJson = async ({ path }) => {
   try {
 
     const response =  await createSnippetJson({ path: dest });
+
+
+    const token = core.getInput('token');
+    const owner = core.getInput('owner');
+    const repo = core.getInput('repo');
+    const octokit = github.getOctokit(token);
+    const message = "updated snippet json";
+    const { data: user } = await octokit.users.getAuthenticated();
+
+    console.log(user);
+    
+
+    const files = [
+      {
+        name: "_data/youtube.json",
+        contents: response
+      },
+    ];
+
+    const commitableFiles = files.map(({name, contents}) => {
+      return {
+        path: name,
+        mode: '100644',
+        type: 'commit',
+        content: contents
+      }
+    })
+
+    // await octokit.rest.git.createCommit({
+    //   owner,
+    //   repo,
+    //   message,
+    //   tree: commitableFiles,
+    //   author.name,
+    //   author.email
+    // })
+
     
     core.setOutput("response", response);
+    
     return response
   } catch (err) {
     console.error(err);

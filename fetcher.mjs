@@ -93,18 +93,19 @@ const createSnippetJson = async ({ path }) => {
     // const token = core.getInput('token');
     // console.log(token)
     const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-    
-    
-    const message = "✨Updated snippet json programatically with Octokit✨";
-    
-    // console.log(owner);
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
-    
-    
+
     const { name: authorName , email: authorEmail } = github.context.payload.commits[0].author;
     const { name: ownerName } =  github.context.payload.repository.owner;
     const { name: repoName } =  github.context.payload.repository;
+
+    const commits = await octokit.repos.listCommits({
+      owner: ownerName,
+      repo: repoName,
+    });
+
+  
+    const message = "✨Updated snippet json programatically with Octokit✨";
+    
     
     console.log(`✨`);
     console.log(authorName);
@@ -116,7 +117,7 @@ const createSnippetJson = async ({ path }) => {
     console.log(repoName);
     console.log(`✨`);
 
-    const CommitSHA = github.context.payload.after;
+    const CommitSHA = commits.data[0].sha;;
 
     const files = [
       {
@@ -165,18 +166,6 @@ const createSnippetJson = async ({ path }) => {
       sha: newCommitSHA,
       ref: "heads/main", // Whatever branch you want to push to
     });
-
-    // await octokit.rest.git.createCommit({
-    //   owner: ownerName,
-    //   repo: repoName,
-    //   message: message,
-    //   tree: currentTreeSHA,
-    //   author: {
-    //     name: authorName,
-    //     email: authorEmail,
-    //   }
-    // })
-
     
     core.setOutput("response", "response");
     

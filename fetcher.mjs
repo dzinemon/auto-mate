@@ -89,6 +89,7 @@ const createSnippetJson = async ({ path }) => {
     const { data: user } = await octokit.users.getAuthenticated();
 
     console.log(user);
+    console.log(owner);
     
 
     const files = [
@@ -122,6 +123,6 @@ const createSnippetJson = async ({ path }) => {
     return response
   } catch (err) {
     console.error(err);
-    core.setFailed(error.message);
+    core.setFailed(err.message);
   }
 })();

@@ -12,6 +12,8 @@ dotenv.config()
 const apiKey = process.env.YT_API_KEY;
 var dest = process.env.DEST;
 var source = process.env.SOURCE;
+var authorName = process.env.AUTHOR_NAME;
+var authorEmail = process.env.AUTHOR_EMAIL;
 
 const requestOptions = {
   method: "GET",
@@ -94,8 +96,7 @@ const createSnippetJson = async ({ path }) => {
     // console.log(token)
     const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 
-    const { name: authorName , email: authorEmail } = github.context.payload.commits[0].author;
-    const { name: ownerName } =  github.context.payload.repository.owner;
+    const { login: ownerName } =  github.context.payload.repository.owner;
     const { name: repoName } =  github.context.payload.repository;
 
     const commits = await octokit.repos.listCommits({

@@ -92,15 +92,13 @@ const createSnippetJson = async ({ path }) => {
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
     
-    console.log(github.context.payload.commits[0].author.name);
-    console.log(github.context.payload.commits[0].author.email);
     
-    const { name: authornName , email: authorEmail } = github.context.payload.commits[0].author;
+    const { name: authorName , email: authorEmail } = github.context.payload.commits[0].author;
     const { name: ownerName } =  github.context.payload.repository.owner;
     const { name: repoName } =  github.context.payload.repository;
     
     console.log(`✨`);
-    console.log(authornName);
+    console.log(authorName);
     console.log(`✨`);
     console.log(authorEmail);
     console.log(`✨`);
@@ -127,12 +125,14 @@ const createSnippetJson = async ({ path }) => {
     })
 
     await octokit.rest.git.createCommit({
-      ownerName,
-      repoName,
-      message,
+      owner: ownerName,
+      repo: repoName,
+      message: message,
       tree: commitableFiles,
-      authornName,
-      authorEmail,
+      author: {
+        name: authorName,
+        email: authorEmail,
+      }
     })
 
     

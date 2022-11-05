@@ -4,6 +4,7 @@ import yaml from "js-yaml";
 import dotenv from 'dotenv';
 import core from '@actions/core';
 import github from '@actions/github';
+import { Octokit } from '@octokit/rest';
 dotenv.config()
 // console.log(process.env)
 
@@ -92,9 +93,10 @@ const createSnippetJson = async ({ path }) => {
     const response =  await createSnippetJson({ path: dest });
 
 
-    // const token = core.getInput('token');
-    // console.log(token)
-    const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+    const octokit = new Octokit({
+      auth: process.env.GITHUB_TOKEN
+    });
+    // const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 
     const { login: ownerName } =  github.context.payload.repository.owner;
     const { name: repoName } =  github.context.payload.repository;

@@ -136,32 +136,32 @@ const createSnippetJson = async ({ path }) => {
       parents: [CommitSHA],
     });
 
-    const {
-      data: { sha: newCommitSHA },
-    } = await octokit.rest.git.createCommit({
-      owner: ownerName,
-			repo: repoName,
-      tree: currentTreeSHA,
-      message: `Updated programatically with Octokit`
-    });
-
-    await octokit.rest.git.updateRef({
-      owner: ownerName,
-			repo: repoName,
-      sha: newCommitSHA,
-      ref: "main", // Whatever branch you want to push to
-    });
-
-    // await octokit.rest.git.createCommit({
+    // const {
+    //   data: { sha: newCommitSHA },
+    // } = await octokit.rest.git.createCommit({
     //   owner: ownerName,
-    //   repo: repoName,
-    //   message: message,
-    //   tree: newCommitSHA,
-    //   author: {
-    //     name: authorName,
-    //     email: authorEmail,
-    //   }
-    // })
+		// 	repo: repoName,
+    //   tree: currentTreeSHA,
+    //   message: `Updated programatically with Octokit`
+    // });
+
+    // await octokit.rest.git.updateRef({
+    //   owner: ownerName,
+		// 	repo: repoName,
+    //   sha: newCommitSHA,
+    //   ref: "main", // Whatever branch you want to push to
+    // });
+
+    await octokit.rest.git.createCommit({
+      owner: ownerName,
+      repo: repoName,
+      message: message,
+      tree: currentTreeSHA,
+      author: {
+        name: authorName,
+        email: authorEmail,
+      }
+    })
 
     
     core.setOutput("response", response);

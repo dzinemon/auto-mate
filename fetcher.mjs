@@ -125,6 +125,8 @@ const createSnippetJson = async ({ path }) => {
       }
     })
 
+
+    // Create Tree SHA
     const {
       data: { sha: currentTreeSHA },
     } = await octokit.rest.git.createTree({
@@ -136,35 +138,38 @@ const createSnippetJson = async ({ path }) => {
       parents: [CommitSHA],
     });
 
-    // const {
-    //   data: { sha: newCommitSHA },
-    // } = await octokit.rest.git.createCommit({
-    //   owner: ownerName,
-		// 	repo: repoName,
-    //   tree: currentTreeSHA,
-    //   message: `Updated programatically with Octokit`
-    // });
 
-    // await octokit.rest.git.updateRef({
-    //   owner: ownerName,
-		// 	repo: repoName,
-    //   sha: newCommitSHA,
-    //   ref: "main", // Whatever branch you want to push to
-    // });
-
-    await octokit.rest.git.createCommit({
+    // Create Commit SHA
+    const {
+      data: { sha: newCommitSHA },
+    } = await octokit.rest.git.createCommit({
       owner: ownerName,
-      repo: repoName,
-      message: message,
+			repo: repoName,
       tree: currentTreeSHA,
-      author: {
-        name: authorName,
-        email: authorEmail,
-      }
-    })
+      message: `Updated programatically with Octokit`,
+      parents: [CommitSHA],
+    });
+
+    await octokit.rest.git.updateRef({
+      owner: ownerName,
+			repo: repoName,
+      sha: newCommitSHA,
+      ref: "main", // Whatever branch you want to push to
+    });
+
+    // await octokit.rest.git.createCommit({
+    //   owner: ownerName,
+    //   repo: repoName,
+    //   message: message,
+    //   tree: currentTreeSHA,
+    //   author: {
+    //     name: authorName,
+    //     email: authorEmail,
+    //   }
+    // })
 
     
-    core.setOutput("response", response);
+    core.setOutput("response", "response");
     
     return response
   } catch (err) {

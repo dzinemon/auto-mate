@@ -84,21 +84,30 @@ const createSnippetJson = async ({ path }) => {
     // const token = core.getInput('token');
     // console.log(token)
     const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
-    const owner = core.getInput('owner');
-    console.log(owner)
-    const repo = core.getInput('repo');
+    
+    
     const message = "updated snippet json";
-    console.log(repo);
-
+    
     // console.log(owner);
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
-
+    
     console.log(github.context.payload.commits[0].author.name);
     console.log(github.context.payload.commits[0].author.email);
-
-    const name = github.context.payload.commits[0].author.name;
-    const email =  github.context.payload.commits[0].author.email;
+    
+    const { name: authornName , email: authorEmail } = github.context.payload.commits[0].author;
+    const { name: ownerName } =  github.context.payload.repository.owner;
+    const { name: repoName } =  github.context.payload.repository;
+    
+    console.log(`✨`);
+    console.log(authornName);
+    console.log(`✨`);
+    console.log(authorEmail);
+    console.log(`✨`);
+    console.log(ownerName);
+    console.log(`✨`);
+    console.log(repoName);
+    console.log(`✨`);
     
 
     const files = [
@@ -118,12 +127,12 @@ const createSnippetJson = async ({ path }) => {
     })
 
     await octokit.rest.git.createCommit({
-      owner,
-      repo,
+      ownerName,
+      repoName,
       message,
       tree: commitableFiles,
-      name,
-      email,
+      authornName,
+      authorEmail,
     })
 
     

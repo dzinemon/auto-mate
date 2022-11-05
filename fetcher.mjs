@@ -69,7 +69,7 @@ const fetchAllSnippets = async ({ ids }) => {
 const createSnippetJson = async ({ path }) => {
   const ids = await currentVideos();
   const response = await fetchAllSnippets({ ids });
-  console.log(response)
+  // console.log(response)
   fs.writeFileSync(path, JSON.stringify(response, null, 2));
 
   return response
@@ -81,15 +81,24 @@ const createSnippetJson = async ({ path }) => {
     const response =  await createSnippetJson({ path: dest });
 
 
-    // const token = core.getInput('token');
-    // const owner = core.getInput('owner');
-    // const repo = core.getInput('repo');
-    // const octokit = github.getOctokit(token);
+    const token = core.getInput('token');
+    console.log(token)
+    const octokit = github.getOctokit(token);
+    const owner = core.getInput('owner');
+    console.log(owner)
+    const repo = core.getInput('repo');
     const message = "updated snippet json";
+    console.log(repo);
 
     // console.log(owner);
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);
+
+    console.log(github.context.payload.commits[0].author.name);
+    console.log(github.context.payload.commits[0].author.email);
+
+    const name = github.context.payload.commits[0].author.name;
+    const email =  github.context.payload.commits[0].author.email;
     
 
     const files = [
@@ -108,14 +117,14 @@ const createSnippetJson = async ({ path }) => {
       }
     })
 
-    // await octokit.rest.git.createCommit({
-    //   owner,
-    //   repo,
-    //   message,
-    //   tree: commitableFiles,
-    //   author.name,
-    //   author.email
-    // })
+    await octokit.rest.git.createCommit({
+      owner,
+      repo,
+      message,
+      tree: commitableFiles,
+      name,
+      email,
+    })
 
     
     core.setOutput("response", response);

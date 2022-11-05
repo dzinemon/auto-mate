@@ -154,7 +154,7 @@ const createSnippetJson = async ({ path }) => {
       owner: ownerName,
 			repo: repoName,
       sha: newCommitSHA,
-      ref: github.context.payload.ref, // Whatever branch you want to push to
+      ref: "heads/main", // Whatever branch you want to push to
     });
 
     // await octokit.rest.git.createCommit({

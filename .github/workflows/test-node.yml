@@ -1,9 +1,16 @@
 name: Testing Node Action
 run-name: ${{ github.actor }} is testing out Node in GitHub Actions 🚀
+# on:
+#   # Triggers the workflow every 5 minutes
+#   schedule:
+#     - cron: "0 3 * * *"
+# on: [workflow_dispatch]
 on:
-  # Triggers the workflow every 5 minutes
-  schedule:
-    - cron: "0 3 * * *"
+  push:
+    branches:
+      - 'main'
+    paths:
+      - '_data/videos.yml'
 
 env:
   YT_API_KEY: ${{ secrets.YT_API_KEY }}

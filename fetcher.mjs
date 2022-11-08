@@ -73,13 +73,13 @@ const fetchAllSnippets = async ({ ids }) => {
 };
 
 const createSnippetJson = async ({ path }) => {
-  const ids = await currentVideos();
+  const rawdata = await currentVideos();
 
-  const uniqueIds = ids.filter((v, i, a) => a.indexOf(v) === i)
-  console.log(`🔵 Total ids: ${ids}`);
-  console.log(`🟡 Total ids: ${uniqueIds}`);
+  const ids = rawdata.filter((v, i, a) => a.indexOf(v) === i)
+  console.log(`🔵 Total ids: ${rawdata.length}`);
+  console.log(`🟡 Total ids: ${ids.length}`);
 
-  const response = await fetchAllSnippets({ uniqueIds });
+  const response = await fetchAllSnippets({ ids });
   fs.writeFileSync(path, JSON.stringify(response, null, 2));
 
   return response;

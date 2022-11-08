@@ -104,13 +104,13 @@ const createSnippetJson = async ({ path }) => {
     const message = "✨Updated snippet json programatically with Octokit✨";
 
     console.log(`✨`);
-    console.log(authorName);
-    console.log(`✨`);
-    console.log(authorEmail);
-    console.log(`✨`);
-    console.log(ownerName);
-    console.log(`✨`);
-    console.log(repoName);
+    console.log(`✨✨`);
+    console.log(`✨✨✨`);
+    console.log(`✨✨✨✨`);
+    console.log(`✨✨✨✨✨`);
+    console.log(`✨✨✨✨`);
+    console.log(`✨✨✨`);
+    console.log(`✨✨`);
     console.log(`✨`);
 
     const CommitSHA = commits.data[0].sha;

@@ -17,8 +17,6 @@ env:
   DEST: "./_data/youtube.json"
   SOURCE: "./_data/videos.yml"
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-  AUTHOR_EMAIL: "andriisharapatov@gmail.com"
-  AUTHOR_NAME: "Andrii S"
 jobs:
   
   how-node-works:

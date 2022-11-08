@@ -12,8 +12,6 @@ dotenv.config();
 const apiKey = process.env.YT_API_KEY;
 var dest = process.env.DEST;
 var source = process.env.SOURCE;
-var authorName = process.env.AUTHOR_NAME;
-var authorEmail = process.env.AUTHOR_EMAIL;
 
 const requestOptions = {
   method: "GET",
@@ -76,7 +74,12 @@ const fetchAllSnippets = async ({ ids }) => {
 
 const createSnippetJson = async ({ path }) => {
   const ids = await currentVideos();
-  const response = await fetchAllSnippets({ ids });
+
+  const uniqueIds = ids.filter((v, i, a) => a.indexOf(v) === i)
+  console.log(`🔵 Total ids: ${ids}`);
+  console.log(`🟡 Total ids: ${uniqueIds}`);
+
+  const response = await fetchAllSnippets({ uniqueIds });
   fs.writeFileSync(path, JSON.stringify(response, null, 2));
 
   return response;

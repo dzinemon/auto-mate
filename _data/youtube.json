@@ -198,5 +198,45 @@
       "dimension": "2d"
     },
     "name": "How should you present your startup's financial results to the board?"
+  },
+  {
+    "id": "fdiALUvJx_U",
+    "snippet": {
+      "publishedAt": "2020-05-18T17:46:47Z",
+      "title": "Should you do your bookkeeping in a spreadsheet?",
+      "description": "Accounting, Bookkeeping, Finance, HR, and Tax for Startups.\n\nNeed help with your startup’s bookkeeping? Kruze Consulting is a leader in providing low-cost, high-quality financials to funded startups. Learn more at https://kruzeconsulting.com/startup-bookkeeping/ \n\nVideo Transcript:\n\nHey, it's Scott Orn at Kruze Consulting. And today, we're answering an audience question. When is it time to move away from spreadsheets? It's a great question. We see tons of startups come into us with all their expenses and revenue listed in a spreadsheet. Or maybe their expense reimbursements listed in a spreadsheet. It's a very common thing. People default to spreadsheets. I know I do. I used to be a finance person. Now the real answer is to get away from spreadsheets as soon as possible, like day one you start the company and start a bank account. Connect that bank account to QuickBooks. Start getting the bank feed going into QuickBooks and actually characterize the transactions inside of QuickBooks. Vanessa Kruze, who's the greatest accountant I know and the founder of Kruze Consulting, says she doesn't even trust herself to keep track of all the accounting inside of a spreadsheet. So sometimes I'll see founders come to us with like a year's worth of spreadsheets and accounting. And we know we may have a really big problem there, and we're gonna have to get into QuickBooks. So save yourself the trouble. Get those financials into QuickBooks right away. It is the best software on the market. It integrates with all the other apps you're going to use eventually. And it's been around for like 20 or 30 years. It's not going anywhere. It just keeps getting better. So use QuickBooks for your financial accounting from day one. Now, the other thing people track in spreadsheets is their expense reimbursements, a.k.a., you know, out to lunch, out to dinner. Maybe they put Amazon Web Services on their credit card or something like that. That's a little bit more understandable. But I have to tell you if you can just sign up for Expensify day one, that's the first app we tell people to sign up for. Because founders always start spending money on their personal credit card before the company's incorporated. Get those transactions into Expensify. It will connect to your bank, or you can just manually load them just like you would in the spreadsheet. It is so much easier for us. The second thing you can do instead of that spreadsheet for expense reimbursements is just to get a Brex credit card. We put all of our clients on Brex. It's the best credit card in the startup market. It's super easy to use. It's virtual and we give a hundred and fifty thousand point bonus for Brex when you sign up using Kruze or we sign you up. And then because you're using the company Brex credit card, you're not even having to file the expense report. It's all on the credit card. So those are the two big things that you can do to move away from spreadsheets. As soon as possible. It's totally understandable. People are very comfortable with spreadsheets. I know I am too. But if you could just sign up for QuickBooks day one or we'll sign you up. Get the bank transactions going into QuickBooks\nand use either Expensify for personal reimbursements or just sign up for a corporate Brex card. You get a hundred fifty thousand points with us. That will make your life so much easier, and it'll make your accountant's life easier because we don't have to do a ton of catch up. And we don't have to charge you for that catch up later. So those are my two tips for moving away from spreadsheets as soon as possible.",
+      "thumbnails": {
+        "default": {
+          "url": "https://i.ytimg.com/vi/fdiALUvJx_U/default.jpg",
+          "width": 120,
+          "height": 90
+        },
+        "medium": {
+          "url": "https://i.ytimg.com/vi/fdiALUvJx_U/mqdefault.jpg",
+          "width": 320,
+          "height": 180
+        },
+        "high": {
+          "url": "https://i.ytimg.com/vi/fdiALUvJx_U/hqdefault.jpg",
+          "width": 480,
+          "height": 360
+        },
+        "standard": {
+          "url": "https://i.ytimg.com/vi/fdiALUvJx_U/sddefault.jpg",
+          "width": 640,
+          "height": 480
+        },
+        "maxres": {
+          "url": "https://i.ytimg.com/vi/fdiALUvJx_U/maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      }
+    },
+    "contentDetails": {
+      "duration": "PT3M10S",
+      "dimension": "2d"
+    },
+    "name": "Should you do your bookkeeping in a spreadsheet?"
   }
 ]

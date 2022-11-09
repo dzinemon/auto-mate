@@ -2,11 +2,9 @@ import fs from "fs";
 import fetch from "node-fetch";
 import yaml from "js-yaml";
 import dotenv from "dotenv";
-import core from "@actions/core";
 import github from "@actions/github";
 import { Octokit } from "@octokit/rest";
 dotenv.config();
-// console.log(process.env)
 
 // YT_API_KEY
 const apiKey = process.env.YT_API_KEY;
@@ -164,6 +162,5 @@ const createSnippetJson = async ({ path }) => {
     return response;
   } catch (err) {
     console.error(err);
-    core.setFailed(err.message);
   }
 })();

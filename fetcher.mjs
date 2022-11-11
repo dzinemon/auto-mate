@@ -97,6 +97,7 @@ const createSnippetJson = async ({ path }) => {
     const commits = await octokit.repos.listCommits({
       owner: ownerName,
       repo: repoName,
+      sha: "dev"
     });
 
     const message = "✨Updated snippet json programatically with Octokit✨";
@@ -113,6 +114,8 @@ const createSnippetJson = async ({ path }) => {
 
     const CommitSHA = commits.data[0].sha;
 
+    console.log(CommitSHA);
+
     const files = [
       {
         name: "_data/youtube.json",
@@ -125,7 +128,7 @@ const createSnippetJson = async ({ path }) => {
         path: name,
         mode: "100644",
         type: "commit",
-        content: contents,
+        content: contents
       };
     });
 

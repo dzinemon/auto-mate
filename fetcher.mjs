@@ -97,6 +97,7 @@ const createSnippetJson = async ({ path }) => {
     const commits = await octokit.repos.listCommits({
       owner: ownerName,
       repo: repoName,
+      sha: "dev"
     });
 
     const message = "✨Updated snippet json programatically with Octokit✨";

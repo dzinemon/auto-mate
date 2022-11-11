@@ -128,8 +128,7 @@ const createSnippetJson = async ({ path }) => {
         path: name,
         mode: "100644",
         type: "commit",
-        content: contents,
-        sha: "dev"
+        content: contents
       };
     });
 

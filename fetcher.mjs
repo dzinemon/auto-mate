@@ -113,6 +113,8 @@ const createSnippetJson = async ({ path }) => {
 
     const CommitSHA = commits.data[0].sha;
 
+    console.log(CommitSHA);
+
     const files = [
       {
         name: "_data/youtube.json",
@@ -156,7 +158,7 @@ const createSnippetJson = async ({ path }) => {
       owner: ownerName,
       repo: repoName,
       sha: newCommitSHA,
-      ref: "heads/dev", // Whatever branch you want to push to
+      ref: "refs/heads/dev", // Whatever branch you want to push to
     });
 
     return response;

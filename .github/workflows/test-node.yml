@@ -8,7 +8,7 @@ run-name: ${{ github.actor }} is testing out Node in GitHub Actions 🚀
 on:
   push:
     branches:
-      - 'main'
+      - 'dev'
     paths:
       - '_data/videos.yml'
 

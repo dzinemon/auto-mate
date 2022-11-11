@@ -101,15 +101,15 @@ const createSnippetJson = async ({ path }) => {
 
     const message = "✨Updated snippet json programatically with Octokit✨";
 
-    console.log(`✨`);
-    console.log(`✨✨`);
-    console.log(`✨✨✨`);
-    console.log(`✨✨✨✨`);
-    console.log(`✨✨✨✨✨`);
-    console.log(`✨✨✨✨`);
-    console.log(`✨✨✨`);
-    console.log(`✨✨`);
-    console.log(`✨`);
+    console.log(`✨  ✨  ✨  ✨  ✨`);
+    console.log(`✨✨  ✨✨  ✨✨  ✨✨  ✨✨`);
+    console.log(`✨✨✨  ✨✨✨  ✨✨✨  ✨✨✨  ✨✨✨`);
+    console.log(`✨✨✨✨  ✨✨✨✨  ✨✨✨✨  ✨✨✨✨  ✨✨✨✨`);
+    console.log(`✨✨✨✨✨  ✨✨✨✨✨  ✨✨✨✨✨  ✨✨✨✨✨  ✨✨✨✨✨`);
+    console.log(`✨✨✨✨  ✨✨✨✨  ✨✨✨✨  ✨✨✨✨  ✨✨✨✨`);
+    console.log(`✨✨✨  ✨✨✨  ✨✨✨  ✨✨✨  ✨✨✨`);
+    console.log(`✨✨  ✨✨  ✨✨  ✨✨  ✨✨`);
+    console.log(`✨  ✨  ✨  ✨  ✨`);
 
     const CommitSHA = commits.data[0].sha;
 
@@ -156,7 +156,7 @@ const createSnippetJson = async ({ path }) => {
       owner: ownerName,
       repo: repoName,
       sha: newCommitSHA,
-      ref: "heads/main", // Whatever branch you want to push to
+      ref: "heads/dev", // Whatever branch you want to push to
     });
 
     return response;

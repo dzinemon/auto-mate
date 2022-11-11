@@ -159,7 +159,7 @@ const createSnippetJson = async ({ path }) => {
       owner: ownerName,
       repo: repoName,
       sha: newCommitSHA,
-      ref: "refs/heads/dev", // Whatever branch you want to push to
+      ref: "heads/dev", // Whatever branch you want to push to
     });
 
     return response;
